@@ -1,0 +1,10 @@
+//hunt for unholy materials
+Get-ChildItem -Path C:\,D:\ -Include *xxx* -Recurse -ErrorAction SilentlyContinue
+
+//check what is heating up processor, sort it and save to csv file
+Get-Process | Sort-Object CPU -Descending | Export-Csv -Path D:\cpu-usage.csv -NoTypeInformation
+
+//send post request with specific header (kill spring app with shutdown endpoint)
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$headers.Add("Content-Type", "application/vnd.spring-boot.actuator.v2+json;charset=UTF-8")
+Invoke-WebRequest -method Post -Headers $headers http://localhost:15849/actuator/shutdown
