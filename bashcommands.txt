@@ -1,0 +1,2 @@
+//removal of target directories with content in java project
+find -name "target" -type d -print0 | xargs -t -0 rm -rf "{}"

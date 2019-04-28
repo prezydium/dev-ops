@@ -1,0 +1,2 @@
+//run maven profile 123 use liquibase plugin, pass context for liquibase
+mvn -P123 liquibase:update -Dliquibase.contexts=basic-schema
